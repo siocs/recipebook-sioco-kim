@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Ingredient
 
 def recipes_list(request):
     ctx = {
@@ -132,4 +133,8 @@ def recipe_2(request):
         "link": "/recipe/2"
     }
     return render(request, 'ledger/recipe_2.html', ctx)
+
+def ingredient_detail(request, pk):
+    ctx = {"name": Ingredient.objects.get(pk=pk)}
+    return render(request, 'app/ingredient_detail.html', ctx)
 
