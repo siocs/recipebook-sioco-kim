@@ -1,140 +1,14 @@
 from django.shortcuts import render
-from .models import Ingredient
+from .models import Recipe
 
 def recipes_list(request):
+    recipes = Recipe.objects.all()
     ctx = {
-        "recipes": [
-        {
-            "name": "Recipe 1",
-            "ingredients": [
-                {
-                    "name": "tomato",
-                    "quantity": "3pcs"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1kg"
-                },
-                {
-                    "name": "water",
-                    "quantity": "1L"
-                },
-                {
-                    "name": "sinigang mix",
-                    "quantity": "1 packet"
-                }
-            ],
-            "link": "/recipe/1"
-        },
-        {
-            "name": "Recipe 2",
-            "ingredients": [
-                {
-                    "name": "garlic",
-                    "quantity": "1 head"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "vinegar",
-                    "quantity": "1/2cup"
-                },
-                {
-                    "name": "water",
-                    "quantity": "1 cup"
-                },
-                {
-                    "name": "salt",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "whole black peppers",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1 kilo"
-                }
-            ],
-            "link": "/recipe/2"
-        }
-        ]
+        'recipes': recipes
     }
     return render(request, 'ledger/recipes_list.html', ctx)
 
-def recipe_1(request):
-    ctx = {
-        "name": "Recipe 1",
-        "ingredients": [
-            {
-                "name": "tomato",
-                "quantity": "3pcs"
-            },
-            {
-                "name": "onion",
-                "quantity": "1pc"
-            },
-            {
-                "name": "pork",
-                "quantity": "1kg"
-            },
-            {
-                "name": "water",
-                "quantity": "1L"
-            },
-            {
-                "name": "sinigang mix",
-                "quantity": "1 packet"
-            }
-        ],
-        "link": "/recipe/1"
-    }
-    return render(request, 'ledger/recipe_1.html', ctx)
-
-def recipe_2(request):
-    ctx = {
-        "name": "Recipe 2",
-        "ingredients": [
-            {
-                "name": "garlic",
-                "quantity": "1 head"
-            },
-            {
-                "name": "onion",
-                "quantity": "1pc"
-            },
-            {
-                "name": "vinegar",
-                "quantity": "1/2cup"
-            },
-            {
-                "name": "water",
-                "quantity": "1 cup"
-            },
-            {
-                "name": "salt",
-                "quantity": "1 tablespoon"
-            },
-            {
-                "name": "whole black peppers",
-                "quantity": "1 tablespoon"
-            },
-            {
-                "name": "pork",
-                "quantity": "1 kilo"
-            }
-        ],
-        "link": "/recipe/2"
-    }
-    return render(request, 'ledger/recipe_2.html', ctx)
-
-def ingredient_detail(request, pk):
-    ctx = {"name": Ingredient.objects.get(pk=pk)}
-    return render(request, 'app/ingredient_detail.html', ctx)
+def recipe_detail(request, pk):
+    ctx = {'recipe': Recipe.objects.get(pk=pk)}
+    return render(request, 'ledger/recipe_detail.html', ctx)
 
