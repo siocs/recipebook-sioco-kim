@@ -3,7 +3,9 @@
 {% block content %}
     <ul>
         {% for recipe in recipes %}
-         <li><a href='http://localhost:8000/ledger{{recipe.link}}'> {{ recipe.name }} </a></li>
+            <li>
+                <a href='{{recipe.link}}'> {{ recipe.name }} </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
