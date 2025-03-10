@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% block heading %}
 {% block title %}{{ recipe.name }}{% endblock %}
-{% block heading %}{{ recipe.name }}{% endblock %}
+{% endblock %}
 {% block content %}
     <p>{{ recipe.author.name }}</p>
     <ul>

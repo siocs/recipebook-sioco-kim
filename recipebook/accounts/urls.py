@@ -1,6 +1,0 @@
-from django.urls import path
-from .views import custom_login
-
-urlpatterns = [path('login', custom_login, name='login')]
-
-app_name = "accounts"
