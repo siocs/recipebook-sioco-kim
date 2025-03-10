@@ -2,6 +2,7 @@
 {% block title %}{{ recipe.name }}{% endblock %}
 {% block content %}
     <h2>{{ recipe.name }}</h2>
+    <p>{{ recipe.author.name }}</p>
     {% for ingredient in ingredients %}
         <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
     {% endfor %}
