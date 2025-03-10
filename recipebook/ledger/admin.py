@@ -1,24 +1,22 @@
 from django.contrib import admin
-
-from django.contrib import admin
-from .models import Recipe, RecipeIngredient, Ingredient
+from .models import Recipe, RecipeIngredient
 
 
-class TaskInline(admin.TabularInline):
+class RecipeIngredientInLine(admin.TabularInline):
     model = RecipeIngredient
 
 
-class TaskGroupAdmin(admin.ModelAdmin):
+class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
-    inlines = [TaskInline, ]
+    inlines = [RecipeIngredientInLine, ]
 
 
-class TaskAdmin(admin.ModelAdmin):
+class RecipeIngredientAdmin(admin.ModelAdmin):
     model = RecipeIngredient
     search_fields = ('ingredient', 'recipe')
     list_display = ('ingredient', 'quantity', 'recipe')
     list_filter = ('recipe', 'ingredient')
 
 
-admin.site.register(Recipe, TaskGroupAdmin)
-admin.site.register(RecipeIngredient, TaskAdmin)
+admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
