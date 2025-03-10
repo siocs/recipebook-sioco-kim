@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Recipe, RecipeIngredient
+from django.contrib.auth.decorators import login_required
 
 
 def recipes_list(request):
@@ -10,6 +11,7 @@ def recipes_list(request):
     return render(request, 'ledger/recipes_list.html', ctx)
 
 
+@login_required
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     ingredients = RecipeIngredient.objects.filter(recipe=recipe)

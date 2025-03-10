@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}{{ recipe.name }}{% endblock %}
 {% block content %}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
     <h2>{{ recipe.name }}</h2>
     <p>{{ recipe.author.name }}</p>
     {% for ingredient in ingredients %}

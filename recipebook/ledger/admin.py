@@ -9,7 +9,7 @@ class RecipeIngredientInLine(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
     inlines = [RecipeIngredientInLine, ]
-    list_display = ('name', 'author', 'created_on', 'updated_on')
+    list_display = ('name', 'author', 'created_on', 'update_on')
 
 
 class RecipeIngredientAdmin(admin.ModelAdmin):
