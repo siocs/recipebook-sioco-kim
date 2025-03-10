@@ -56,6 +56,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'recipebook.urls'
+LOGOUT_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "ledger:recipes-list"
 
 TEMPLATES = [
     {
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 

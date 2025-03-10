@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Recipe Book{% endblock %}
+{% block heading %}
+{% block title %}Recipes List{% endblock %}
+{% endblock %}
 {% block content %}
     <ul>
         {% for recipe in recipes %}

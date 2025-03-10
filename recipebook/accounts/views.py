@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 
-def login(request):
+def custom_login(request):
     return render(request, 'registration/login.html')
 
 
-def logout(request):
+def custom_logout(request):
     return render(request, 'registration/logout.html')

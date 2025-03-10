@@ -6,7 +6,21 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <h1>Recipe Book</h1>
+    <header>
+        <h1>Recipe Book</h1>
+        {% if request.user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <form action="{% url 'login' %}" method="GET">
+                <button type="submit">Login</button>
+            </form>
+        {% endif %}
+    </header>
+    <hr>
+    <h2>{% block heading %}{% endblock %}</h2>
     {% block content %}{% endblock %}
 </body>
 </html>
