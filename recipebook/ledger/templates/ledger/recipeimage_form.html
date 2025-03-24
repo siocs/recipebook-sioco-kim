@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block heading %}
-{% block title %}Recipe Form{% endblock %}
+{% block title %}Recipe Image Form{% endblock %}
 {% endblock %}
 {% block content %}
-    <form method="post">
+    <a href="{% url 'ledger:recipe-detail' view.kwargs.pk %}">Return to Recipe</a>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
+    
 {% endblock %}

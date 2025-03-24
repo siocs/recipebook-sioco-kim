@@ -54,3 +54,6 @@ class RecipeImage(models.Model):
 
     def __str__(self):
         return self.description
+
+    # def get_absolute_url(self):
+    #     return reverse('ledger:recipe-detail', args=[str(self.recipe.pk)])

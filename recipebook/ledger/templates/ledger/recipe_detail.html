@@ -7,6 +7,7 @@
     {% for image in recipe.recipe_image.all %}
         <img src="{{ image.image.url }}" alt="{{ image.description }}" style="max-width: 49%; height: auto">
     {% endfor %}
+    <p><a href="{% url 'ledger:recipe-addimage' recipe.pk %}">Add New Image</a></p>
     <ul>
         {% for ingredient in ingredients %}
             <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>

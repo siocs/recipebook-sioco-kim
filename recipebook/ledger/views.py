@@ -1,9 +1,10 @@
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, RecipeImage
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, UpdateView
-from .forms import RecipeForm
+from django.views.generic.edit import CreateView
+from .forms import RecipeForm, RecipeImageForm
+from django.urls import reverse
 
 
 class RecipeListView(ListView):
@@ -32,3 +33,16 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user.profile
         return super().form_valid(form)
+
+
+class RecipeImageCreateView(CreateView):
+    model = RecipeImage
+    form_class = RecipeImageForm
+
+    def form_valid(self, form):
+        self.recipe = Recipe.objects.get(pk=self.kwargs['pk'])
+        form.instance.recipe = self.recipe
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('ledger:recipe-detail', kwargs={'pk': self.recipe.pk})
