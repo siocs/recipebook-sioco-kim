@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block heading %}
+{% block title %}Recipe Form{% endblock %}
+{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
