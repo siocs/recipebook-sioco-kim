@@ -49,7 +49,7 @@ class RecipeImage(models.Model):
         Recipe,
         on_delete=models.CASCADE,
         null=False,
-        related_name='pic_recipe'
+        related_name='recipe_image'
     )
 
     def __str__(self):
